@@ -1,13 +1,13 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: AirSonos
+# Home Assistant Community App: AirSonos
 # Checks latency settings before starting the AirSonos server
 # ==============================================================================
 declare latency
 
-# Migrate add-on data from the Home Assistant config folder,
-# to the add-on configuration folder.
+# Migrate app data from the Home Assistant config folder,
+# to the app configuration folder.
 if ! bashio::fs.file_exists '/config/airsonos.xml' \
     && bashio::fs.file_exists '/homeassistant/airsonos.xml'; then
     mv /homeassistant/airsonos.xml /config/airsonos.xml \

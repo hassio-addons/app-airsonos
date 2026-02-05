@@ -1,7 +1,7 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: AirSonos
+# Home Assistant Community App: AirSonos
 # Take down the S6 supervision tree when the AirSonos server fails
 # ==============================================================================
 declare exit_code
