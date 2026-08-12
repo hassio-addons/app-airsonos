@@ -15,6 +15,7 @@ RUN \
     apt-get update \
     && apt-get install -y --no-install-recommends \
         unzip=6.0-29 \
+        python3 \
     \
     && curl -J -L -o /tmp/airconnect.zip \
       "https://github.com/philippe44/AirConnect/releases/download/${AIRCONNECT_VERSION}/AirConnect-${AIRCONNECT_VERSION}.zip" \

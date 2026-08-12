@@ -1,0 +1,12 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community App: AirSonos
+# Runs the AirSonos devices web UI (Ingress)
+# ==============================================================================
+bashio::log.info 'Starting the AirSonos devices web UI...'
+
+export AIRSONOS_CONFIG='/config/airsonos.xml'
+export AIRSONOS_WEB_PORT='8099'
+
+exec python3 /usr/lib/airsonos/server.py

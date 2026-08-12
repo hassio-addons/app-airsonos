@@ -175,6 +175,19 @@ separately. Every time it finds a new device, it will be added to that file.
 > **NOTE**: It is HIGHLY recommended to stop the app before making changes
 > to the configuration file manually.
 
+## Hiding devices
+
+If you don't want some of your Sonos / UPnP players to show up as AirPlay
+devices, you can hide them without editing any files by hand.
+
+Open the app and click "Open Web UI" (or use the "Devices" entry that appears
+in the Home Assistant sidebar). This page lists every device that has been
+detected so far. Uncheck a device to hide it and click "Save". The app
+restarts automatically so the change takes effect.
+
+Devices only appear here once they have been discovered, so give the app a
+little time to find your players before hiding them.
+
 ## Known issues and limitations
 
 - This app does support ARM-based devices, nevertheless, they must
