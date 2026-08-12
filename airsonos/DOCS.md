@@ -104,6 +104,49 @@ an AirPlay player and others will be removed if they were already detected.
 If the group is later split, then individual players will re-appear.
 Each detection cycle takes ~30 seconds.
 
+### Playing AirPlay audio to a whole Sonos group
+
+This is the recommended way to send AirPlay audio to several Sonos players at
+once (including older players that don't have native AirPlay 2, such as a
+Play:1), keeping them perfectly in sync:
+
+1. In the **Sonos app**, group the players you want together (e.g., a Ray and a
+   Play:1). It doesn't matter which one is the group coordinator.
+1. Wait ~30 seconds for the app to pick up the new group. Only **one** AirPlay
+   device (named after the group master) will remain for that group; the other
+   members disappear from the AirPlay list. This is expected.
+1. On your iPhone/Mac, AirPlay to that single (master) device. The audio plays
+   on the **whole group**, synchronized by Sonos itself.
+
+Because this app controls Sonos over UPnP (not native AirPlay), grouping is
+**not** broken when you start playback — unlike sending native AirPlay 2
+directly to a Sonos speaker, which removes the other members from the group.
+
+> **Tip**: You never pick a "group" in the AirPlay list, and you won't see the
+> group's name there. You always AirPlay to the single master device, and Sonos
+> fans the audio out to the rest of the group.
+
+### Troubleshooting group detection
+
+If grouped players still show up individually, or the group's master never
+appears:
+
+- **Give it time**: detection runs every ~30 seconds. Group in the Sonos app,
+  then wait before checking the AirPlay list.
+- **Stale AirPlay entries**: iOS/macOS cache AirPlay devices aggressively.
+  Toggle Wi-Fi off/on (or reboot the device) to refresh the list after
+  regrouping.
+- **Multicast filtering**: many routers filter the multicast traffic this app
+  relies on to track Sonos group topology (common on UniFi and some consumer
+  routers). Disabling **IGMP snooping** / **multicast snooping** on your
+  router/switch usually fixes players that appear, disappear, or won't group.
+- **Legacy configuration**: older versions of this app shipped a configuration
+  file in the wrong (Chromecast) format. The app now detects and resets such
+  files automatically on start; if in doubt, stop the app, delete
+  `airsonos.xml` from the app configuration folder, and start it again to get a
+  fresh, correct configuration.
+
+
 Volume is set for the whole group, but the same level applies to all members.
 If you need to change individual volumes, you need to use a Sonos native
 controller. **Note**: these will be overridden if the group volume is later

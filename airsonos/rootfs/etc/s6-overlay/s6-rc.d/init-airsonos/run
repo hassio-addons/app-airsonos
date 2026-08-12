@@ -19,6 +19,18 @@ if ! bashio::fs.file_exists '/config/airsonos.xml'; then
     cp /etc/airsonos.xml /config/airsonos.xml
 fi
 
+# Migrate legacy configuration files that used the Chromecast (aircast)
+# format. The bundled binary is airupnp and expects an <airupnp> root;
+# an <aircast> root prevents proper Sonos handling (including group
+# detection). Reset such configs to the correct default so devices are
+# re-discovered cleanly.
+if grep -q '<aircast>' /config/airsonos.xml; then
+    bashio::log.warning \
+        'Detected a legacy (aircast) configuration; resetting to the' \
+        'correct airupnp format. Devices will be re-discovered.'
+    cp /etc/airsonos.xml /config/airsonos.xml
+fi
+
 # Warn if latency is below 500ms
 latency=$(bashio::config 'latency_rtp')
 if [[ "${latency}" -lt 500 && "${latency}" -ne 0 ]]; then
